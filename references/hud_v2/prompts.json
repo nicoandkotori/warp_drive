@@ -1,0 +1,53 @@
+{
+  "tool": "built-in image_gen",
+  "source": "../../HUD_V2_DESIGN.md",
+  "common": "Cinematic sci-fi film still, 16:9, photoreal deep space, very dark background with rich true-black, subtle film grain.\nA minimal diegetic holographic interface drawn as thin lines of light directly in 3D space ��\nno screens, no panels, no cockpit or window frame, no glowing buttons, no rounded cards.\nHairline 1px strokes, ice-white (#DDEBFF) with sparse cyan (#6FE3FF) accents and a single amber (#FFB45A) highlight for the target.\nSparse elegant typography with wide letter spacing, thin geometric sans-serif and monospaced numerals, lots of negative space.\nInspired by the interface design of the films Oblivion (2013), Blade Runner 2049 and The Expanse. Premium, restrained, quiet, high-end.\n",
+  "shots": [
+    {
+      "name": "01_neighborhood",
+      "base_prompt": "First-person view into deep space from a starship bridge (no visible cockpit). Floating in front of the viewer at true 3D depth:\nthe local stellar neighborhood as a sparse constellation of tiny points of light, each with a hairline leader line and a very small label.\nAt the center a tiny marker reading \"SOL\". One thin circular ring of light expanding outward from the center of view.\nOnly a handful of labels, calm and uncluttered.\n",
+      "variants": 2
+    },
+    {
+      "name": "02_route",
+      "base_prompt": "The same holographic star constellation in 3D space. One star highlighted in amber with a thin circular reticle;\nall other stars dimmed. A luminous amber route line arcs through space from the \"SOL\" marker to the amber star,\nwith tiny tick marks at regular intervals along it and one small label at mid-route: \"4.37 LY\".\nDepth of field, the route line recedes in perspective.\n",
+      "variants": 2
+    },
+    {
+      "name": "03_lock",
+      "base_prompt": "Real starfield ahead, the hologram is gone. A thin amber targeting reticle (two corner brackets and a fine circle)\nlocks onto one bright star in the real sky. Next to it, two short lines of tiny text set like a film title:\n\"LIGHT: 4.37 YEARS\" and \"US: ~4 MONTHS\". Nothing else on screen.\n",
+      "variants": 2
+    },
+    {
+      "name": "04_charge",
+      "base_prompt": "Third-person shot from behind and above a long dark angular battleship with two large ring-shaped warp drives near its middle.\nThe ring segments are partially lit in cold blue. A thin holographic arc gauge floats in 3D just outside one ring,\nfollowing its curvature in perspective, with a tiny percentage readout \"72%\". No screen-space panels.\n",
+      "variants": 2
+    },
+    {
+      "name": "05_countdown",
+      "base_prompt": "The same battleship from behind and above, warp rings fully charged and glowing.\nIn the space just ahead of the bow floats a very thin, tall holographic numeral \"2\", drawn with hairlines and set in 3D perspective,\nslightly transparent. The ring segments show a countdown pattern: one third dark, two thirds bright.\n",
+      "variants": 2
+    },
+    {
+      "name": "06_ftl_gates",
+      "base_prompt": "The battleship seen from behind at faster-than-light speed; ahead, a starbow �� the stars compressed into a rainbow ring around the direction of travel.\nFaint holographic \"distance gates\" �� thin rectangular frames of light placed in space at intervals along the flight path ��\nstreaming toward and past the camera, each tagged with a tiny label like \"2.5 LY\". At the left screen edge a single large, very thin numeral \"13.0 c\".\n",
+      "variants": 2
+    },
+    {
+      "name": "07_arrival",
+      "base_prompt": "The battleship hovering just above the surface of an enormous blue-white star: a curved glowing horizon across the lower half of the frame,\ngranulated plasma surface, a tall prominence arching above the horizon far larger than the ship, the ship as a dark silhouette against the light.\nA single hairline leader line from the star to a small elegant two-line label: \"ALPHA CENTAURI A\" / \"4.37 LY �� 117 DAYS\". Dark space above.\n",
+      "variants": 2
+    }
+  ],
+  "variant_direction": "Second composition variant; restrained hairlines and dark negative space. For ship shots emphasize exactly two hoop warp rings around mid hull; no planets. Route target ALPHA CENTAURI; gate labels 0.5–4.37 LY.",
+  "selected": {
+    "01": "a",
+    "02": "b",
+    "03": "a",
+    "04": "b",
+    "05": "b",
+    "06": "b",
+    "07": "b"
+  },
+  "note": "Generated images are composition references only. Text, distances, ring animation and final spacecraft geometry are authored by code."
+}

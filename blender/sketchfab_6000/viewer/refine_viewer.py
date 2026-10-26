@@ -1,0 +1,10 @@
+from pathlib import Path
+p=Path(__file__).with_name('viewer.js')
+s=p.read_text(encoding='utf-8')
+s=s.replace('depth*2.1,1.4,7.','depth*3.1,2.3,9.')
+s=s.replace('exp(-r*r*5.5)','exp(-r*r*4.5)')
+s=s.replace('brightness*a*1.5','brightness*a*2.0')
+s=s.replace('light*1.3','light*1.55').replace('vec3(.65)','vec3(.8)')
+s=s.replace('vec4(light,1.-trans)','vec4(light,min(1.-trans,.8))')
+s=s.replace('devicePixelRatio,1.25','devicePixelRatio,1.75')
+p.write_text(s,encoding='utf-8')

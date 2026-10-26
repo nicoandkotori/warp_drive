@@ -1,0 +1,25 @@
+# 生成产物：配音、配乐、渲染片段、预览、备份，都能用 make.py 重新生成
+build/
+*.mp4
+配音试听/
+
+# Python / 工具缓存
+__pycache__/
+*.pyc
+.tmp/
+*.log
+
+# Blender：.blend 只是产物，构建脚本才是来源；第三方原始素材（BlenderKit 等）不可再分发
+*.blend
+*.blend1
+blender/**
+!blender/**/
+!blender/**/*.py
+!blender/**/*.txt
+# galaxy.py 从这里读取星系数据（Sketchfab 模型着色后导出，CC BY 4.0，署名见 ATTRIBUTION.txt）
+!blender/sketchfab_6000/viewer/data.js
+!blender/sketchfab_6000/viewer/index.html
+!blender/sketchfab_6000/viewer/viewer.js
+blender/sketchfab_6000/original/
+# 只是选型时下载的候选素材（含第三方仓库 synapticore-studio/astronomical 的源码快照），项目没有用到
+blender/free_galaxy_candidates/

@@ -1,0 +1,26 @@
+Free simple 3d galaxy composed of 6000 stars
+Author: caton.laubergiste
+Source: https://sketchfab.com/3d-models/free-simple-3d-galaxy-composed-of-6000-stars-46c390591651438abe3ccb2396d16e6b
+License: Creative Commons Attribution 4.0 (CC BY 4.0)
+https://creativecommons.org/licenses/by/4.0/
+
+Original FBX supplied by the user from the authorized Sketchfab download.
+Changes: assigned blue, blue-white, warm-white, gold and orange-red emission
+materials with varied brightness; added cameras, black world and gentle glow.
+Star positions and geometry are preserved. No new stars or nebulae added.
+This is an artistic galaxy, not a scientifically accurate Milky Way map.
+Original import contains 6001 mesh objects. Approximate center spread:
+X: -20.84..20.93; Y: -20.86..20.74; Z: -0.73..0.73.
+
+Open galaxy_6000_colored.blend in Blender. Middle-mouse drag orbits,
+mouse wheel zooms, Shift+middle-mouse pans. Numpad 0 enters the camera.
+Use Z > Rendered to see emissive materials against black space.
+
+Reference-based nebula revision:
+File: galaxy_reference_nebula.blend; builder: reference_nebula.py.
+Added a real procedural volume: broad fractured blue-grey arms, warm central
+emission, multiscale dust absorption and sparse rose emission regions.
+All 6000 stars retained. Hidden etoile.6001, the oversized source prototype
+at the origin, replacing its visible solid ball with a volumetric nucleus.
+This additional volume is our procedural modification, not part of the
+original Sketchfab download or the proprietary SpiralForge product.

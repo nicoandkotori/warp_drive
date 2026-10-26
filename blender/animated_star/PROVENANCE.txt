@@ -1,0 +1,17 @@
+Downloaded asset: Animated Star - variable color
+Author: Matthew Ames
+Source: https://www.blendkit.com/asset-gallery-detail/964abd5c-b7c3-4512-89cd-3c244e64693b/
+License: royalty_free (official metadata in search.json); not CC0.
+Original file: original.blend, 519240 bytes, preserved unmodified.
+Preview: preview.blend adds camera, black world, modest compositor glow, Cycles/OptiX, AgX.
+Original material settings and geometry preserved. Transparent bounces set to 100 per author.
+Blender 5.2.2 repaired one legacy node link on opening; original asset is preserved for comparison.
+01_original_overview.png and 02_original_closeup.png: 960x720, 32 samples, denoised.
+Short GIF: 24 frames, 480x360, 12 samples, original animation frames 40..132 at step 4.
+The existing warp-drive star implementation has NOT been replaced.
+Animation validation note: Original and explicit-property preview attempts produced identical frames in Blender 5.2.2. Animation compatibility is unresolved; do not treat the frames as a working animated preview. No GIF delivered. The still renders are valid previews of the original geometry and materials. Existing warp-drive model remains unchanged.
+
+Correction: Earlier animation test was invalid: RGBA ImageChops.getbbox() ignored RGB differences because the alpha difference was zero. RGB-converted comparison confirms changing animation. The explicit original-property/time evaluation does animate. New video uses 48 frames at 12 fps (original scene frames 40..134 step 2), 480x360, 12 samples. MP4 uses H.264 baseline/yuv420p/faststart.
+
+Close-arrival preview: render_arrival_hd.py matches the old WarpShot arrival camera in normalized stellar coordinates, with Y-up to Z-up conversion and 42-degree vertical FOV. Native 1920x1080, 24 fps, 64 Cycles samples, no motion blur, reduced compositor glare. Corona, Solar_Fire, and Solar_Prominences hidden in the isolated preview because the close camera intersects the model's large outer effects. Original surface material scale retained after testing. Original downloaded file and main project remain unchanged.
+Known limitation: this asset's surface has soft features and visibly coarse silhouette at this extreme camera distance; HD rendering does not repair those material/geometry limitations. The full-effects test frame is in arrival_hd_frames/000.png. The clear surface preview is in arrival_final_frames/.

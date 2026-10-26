@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>银河细化 · 效果预览</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,"Microsoft YaHei",sans-serif;background:#06090f;color:#e2e8f0}*{box-sizing:border-box}body{margin:0}main{max-width:1440px;margin:auto;padding:32px 24px 70px}header{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:28px}h1{font-size:30px;font-weight:500;margin:8px 0}p{color:#94a3b8;line-height:1.7;margin:8px 0}.eyebrow{color:#8ecac6;letter-spacing:3px;font-size:11px}nav,.toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap}button,a.button,select{font:inherit;background:#111b29;color:#cbd5e1;border:1px solid #2a394c;padding:9px 14px;border-radius:7px;cursor:pointer;text-decoration:none}button:hover,a.button:hover{background:#223449}button.active{border-color:#83c7c0;color:#b0eee6;background:#172d32}section{margin-top:24px}section[hidden]{display:none}video{width:100%;max-height:74vh;background:#000;border:1px solid #233044;border-radius:9px}.toolbar{padding:12px 0}.hint{font-size:12px;color:#92a2b8}#viewport{overflow:auto;border:1px solid #233044;border-radius:9px;background:#000}#compare{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;--split:50%}#compare.native{width:1920px;height:1080px}#compare img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block}#old{clip-path:inset(0 calc(100% - var(--split)) 0 0)}#line{position:absolute;top:0;bottom:0;left:var(--split);width:2px;background:#8ce0d3;pointer-events:none}.badge{position:absolute;top:14px;background:#061019bb;padding:5px 10px;font-size:12px;border-radius:4px}.left{left:12px}.right{right:12px}#split{flex:1;min-width:150px;accent-color:#84c8c2}#frames{display:flex;gap:7px;flex-wrap:wrap}#frames button{font-size:12px}#cropImage{display:block;width:100%;max-width:1280px;margin:auto}footer{margin-top:30px;border-top:1px solid #233044;padding-top:18px;color:#718298;font-size:12px}#error{color:#fca5a5}a{color:#9cd9d1}@media(max-width:650px){main{padding:20px 12px}header{display:block}h1{font-size:25px}nav{margin-top:16px}}
+</style>
+<main>
+<header><div><div class="eyebrow">WARP DRIVE / GALAXY STUDY</div><h1>银河 · 星云细化</h1><p>暖金银核、暗尘埃裂缝与细密星粒。查看本次实际成片渲染。</p></div><nav aria-label="预览方式"><button data-tab="motion" class="active">推进视频</button><button data-tab="stills">前后拖动对比</button><button data-tab="crops">100% 局部</button></nav></header>
+<section id="motion"><video id="video" controls loop playsinline preload="metadata" poster="build/stills/still_0011.00.png"><source src="build/galaxy_dive_test.mp4" type="video/mp4"></video><div class="toolbar"><button id="play">播放 / 暂停</button><label>速度 <select id="speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option></select></label><span class="hint">成片 6–12 秒 · 1080p / 60 fps · 含 HUD</span><a class="button" href="build/galaxy_dive_test.mp4" download>下载片段</a></div></section>
+<section id="stills" hidden><div id="frames" aria-label="选择关键帧"></div><div class="toolbar"><label for="split">改前 / 改后</label><input id="split" type="range" min="0" max="100" value="50"><button id="size">100% 原尺寸</button><a id="full" class="button" href="build/galaxy/final/07_candidate.png" target="_blank">打开新版原图</a></div><div id="viewport"><div id="compare"><img id="new" src="build/galaxy/final/07_candidate.png" alt="细化后的银河"><img id="old" src="build/galaxy/before/07_candidate.png" alt="细化前的银河"><div id="line"></div><span class="badge left">改前</span><span class="badge right">改后</span></div></div><p class="hint">拖动滑杆查看同一镜头的变化；原尺寸模式下可横向、纵向滚动检查细节。</p></section>
+<section id="crops" hidden><p>上半：改前　／　下半：改后。依次为远景、近景、盘内光带与锁定时背景。</p><a href="build/galaxy/final/compare_crops.png" target="_blank"><img id="cropImage" src="build/galaxy/final/compare_crops.png" alt="四个区域原尺寸前后对比"></a><p class="hint">点击图片打开原尺寸。</p></section>
+<p id="error" role="alert"></p>
+<footer>本页展示 Python / GPU 引擎的最终输出。<a href="galaxy-3d-preview.html" target="_blank">打开新版三维预览 · 拖动旋转与缩放</a><br>恒星模型：caton.laubergiste · CC BY 4.0 · 已修改材质并添加星云。</footer>
+</main>
+<script>
+const $=id=>document.getElementById(id), video=$('video');
+document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-tab]').forEach(x=>{const active=x===b;x.classList.toggle('active',active);x.setAttribute('aria-pressed',String(active));$(x.dataset.tab).hidden=!active});if(b.dataset.tab!=='motion')video.pause()});
+$('play').onclick=()=>{if(video.paused)video.play().catch(()=>{$('error').textContent='无法播放，请点击播放器或下载片段查看。'});else video.pause()};
+$('speed').onchange=e=>video.playbackRate=Number(e.target.value);
+video.onerror=()=>{$('error').textContent='视频未能加载，请确认本地预览服务仍在运行。'};
+const views=[['01_hero_far','0.3s 远景'],['02_hero','4.5s 银河'],['03_approach','7.2s 接近'],['04_close','7.6s 近景'],['05_dive','8.0s 潜入'],['06_inside','9.9s 盘内'],['07_candidate','11.0s 选星'],['08_select','14.7s 选定'],['09_route','16.0s 航线'],['10_lock','18.3s 锁定']];
+views.forEach(([key,title])=>{const b=document.createElement('button');b.textContent=title;b.classList.toggle('active',key==='07_candidate');b.onclick=()=>{$('new').src=`build/galaxy/final/${key}.png`;$('old').src=`build/galaxy/before/${key}.png`;$('full').href=$('new').src;document.querySelectorAll('#frames button').forEach(x=>x.classList.toggle('active',x===b))};$('frames').append(b)});
+$('split').oninput=e=>$('compare').style.setProperty('--split',e.target.value+'%');
+$('size').onclick=()=>{const native=$('compare').classList.toggle('native');$('size').textContent=native?'适应窗口':'100% 原尺寸'};
+document.querySelectorAll('img').forEach(img=>img.onerror=()=>{$('error').textContent='图片加载失败：'+img.getAttribute('src')});
+</script>
+</html>

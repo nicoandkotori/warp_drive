@@ -1,0 +1,8 @@
+moderngl>=5.13
+numpy>=2.0
+scipy>=1.14
+numba>=0.61
+matplotlib>=3.9
+pillow>=11.0
+imageio-ffmpeg>=0.6
+edge-tts>=7.3
