@@ -23,3 +23,7 @@ blender/**
 blender/sketchfab_6000/original/
 # 只是选型时下载的候选素材（含第三方仓库 synapticore-studio/astronomical 的源码快照），项目没有用到
 blender/free_galaxy_candidates/
+# Blender 战列舰重建链需要的参考图（AI 生成 / V2 渲染）和 V2 校验记录，见 BATTLESHIP_MODEL.md
+!blender/battleship_detail/reference_original.png
+!blender/battleship_detail/reference_preferred_v2.png
+!blender/battleship_detail/reference_refined_v2/preservation_report.json

@@ -31,6 +31,19 @@ python make.py render --jobs 3           # 多进程并行渲染
 
 **字体**：`opusvid/settings.py` 的 `FONTS` 和 `wfx.py` 的 `MONO` 写的是 Windows 字体路径（Noto Sans/Serif SC、思源宋体 Heavy、Bahnschrift、Cascadia Mono），在其他系统上请改成本机字体。
 
+## 飞船模型
+
+片中的双刃战列舰由代码实时渲染（SDF 光线步进）：几何在 `battleship_geometry.py`，材质与充能、曲率环在 `ship_model.py`。
+
+另有 Blender 精修版（可编辑网格 + Cycles 材质），`.blend` 每个约 150 MB，放在 [Releases](https://github.com/nicoandkotori/warp_drive/releases) 里下载。也可以用脚本从头重建（Blender 均为后台运行 `blender -b --python <脚本>`）：
+
+```
+python export_ship_mesh.py                                   # SDF → blender/battleship_detail/ship_mesh.npz
+blender/battleship_detail/build_scene.py                     # → battleship_detail.blend
+blender/battleship_detail/refine_reference.py -- --final     # → reference_refined_v2/（V2，选定版）
+blender/battleship_detail/refine_subtle_v4.py -- --final     # → reference_refined_v4/（V4，在 V2 上加细节）
+```
+
 ## 素材与署名
 
 - 星系数据 `blender/sketchfab_6000/viewer/data.js` 来自 Sketchfab 模型 [Free simple 3d galaxy composed of 6000 stars](https://sketchfab.com/3d-models/free-simple-3d-galaxy-composed-of-6000-stars-46c390591651438abe3ccb2396d16e6b)，作者 caton.laubergiste，[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)；本项目重新着色并加了程序化星云，详见 `blender/sketchfab_6000/ATTRIBUTION.txt`。
